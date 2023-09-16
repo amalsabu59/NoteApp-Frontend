@@ -1,0 +1,27 @@
+.note-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+  }
+  
+  .note {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(121, 118, 118, 0.2);
+    padding: 10px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  h4 {
+    font-size: 20px;
+    margin: 0;
+    color: #6e6b6b;
+  }
+  
+  p {
+    font-size: 16px;
+    color: #6e6b6b;
+  }
+
+  

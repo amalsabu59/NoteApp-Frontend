@@ -1,0 +1,46 @@
+/* Add this CSS to a separate .css or .scss file and import it into your component */
+.navbar {
+    background-color: #fff;
+    /* color: #ffffff; */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  
+    z-index: 1000; /* Ensure it's above other elements */
+ 
+  }
+  
+  .navbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .login-button,
+  .logout-button {
+    background-color: #2ecc71;
+    color: #ffffff;
+    border: none;
+    width: 50px;
+    height: 50px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover,
+  .logout-button:hover {
+    background-color: #27ae60;
+  }
+  

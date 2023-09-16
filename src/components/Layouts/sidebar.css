@@ -1,0 +1,16 @@
+.sidebar-nav li {
+    padding: 10px;
+  }
+  
+  .sidebar-nav li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+  }
+  
+  /* Style for the active (selected) tab */
+  .sidebar-nav li a.active {
+    background-color:  #ddd;
+    color: rgb(31, 24, 24);
+  }
+  

@@ -1,0 +1,41 @@
+.input-field {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    
+    padding: 10px;
+   
+    margin: 20px auto;
+    margin-top: 70px;
+    max-width: 400px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .button-1 {
+    background-color:#faf1f1;
+    color: #6e6b6b;
+    width:px;
+    height: auto;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  

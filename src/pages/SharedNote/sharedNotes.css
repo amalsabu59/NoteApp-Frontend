@@ -1,0 +1,49 @@
+/* Tabs container */
+.tabs {
+    display: flex;
+    justify-content: center;
+    /* background-color: #007bff; */
+    color: #f8f8f8;
+    padding: 10px 0;
+    margin-top: 100px;
+  }
+  
+  /* Individual tab style */
+  .tab {
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: 0 10px;
+    color: white;
+    font-weight: bold;
+    color: rgb(170, 160, 160);
+    transition: background-color 0.3s;
+  }
+  
+  /* Active tab style */
+  .tab.active {
+    background-color: #6c6f72;
+    color: white;
+  }
+  
+  /* Tab content container */
+  .tab-content {
+    padding: 20px;
+    /* background-color: #f8f8f8; */
+    /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); */
+    /* border-radius: 5px; */
+  }
+  
+  /* Styles for the content within each tab */
+  .tab-content h2 {
+    color: #333;
+  }
+  
+  /* Example styling for sent/received content */
+  .tab-content .sent-content {
+    /* Add styling for the Sent tab content here */
+  }
+  
+  .tab-content .received-content {
+    /* Add styling for the Received tab content here */
+  }
+  
