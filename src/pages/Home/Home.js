@@ -30,8 +30,7 @@ const Home = () => {
   const loginModalOpen = useSelector((state) => state.user.loginModal);
   const failedStatus = useSelector((state) => state.user.failedStatus);
   const user = useSelector((state) => state.user.currentUser?._id);
-  console.log(user, "gfdgfd");
-
+  const userFromSession = localStorage.getItem("user");
   const notify = (message) =>
     toast.error(message, {
       position: "top-center",
@@ -57,7 +56,7 @@ const Home = () => {
       dispatch(getNote(user));
     }
     dispatch(allUsers());
-    if (!user) {
+    if (!userFromSession) {
       dispatch(openLoginModal());
     }
   }, [user]);
