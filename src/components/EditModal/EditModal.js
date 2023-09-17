@@ -1,15 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import "./editModal.css";
 import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
-import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 import InputField from "../Home/InputFiled";
+import { useDispatch, useSelector } from "react-redux";
+import { closeEditModal } from "../../redux/slices/globalSlice";
 
 function EditModal({ open, onClose, onShare }) {
+  const dispatch = useDispatch();
+  const handleClose = () => {
+    dispatch(closeEditModal());
+  };
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Share Note</DialogTitle>
+      <IconButton
+        aria-label="close"
+        className="close-button"
+        onClick={handleClose}
+      >
+        <CloseIcon />
+      </IconButton>
       <DialogContent>
         <InputField />
       </DialogContent>

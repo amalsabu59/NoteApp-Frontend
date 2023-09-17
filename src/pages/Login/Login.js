@@ -7,18 +7,25 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import { useDispatch } from "react-redux";
+import { closeLoginModal, login } from "../../redux/slices/userSlice";
 
-function Login({ open, onClose }) {
+function Login({ open }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const dispatch = useDispatch();
   const handleLogin = () => {
     // Add your login logic here
     console.log("Username:", username, "Password:", password);
+    dispatch(login({ username, password }));
+  };
+
+  const handleCloseModal = () => {
+    dispatch(closeLoginModal());
   };
 
   return (
-    <Dialog open={false} onClose={onClose}>
+    <Dialog open={open} onClose={handleCloseModal}>
       <div
         style={{
           display: "flex",
@@ -27,7 +34,7 @@ function Login({ open, onClose }) {
         }}
       >
         {/* <DialogTitle>Login</DialogTitle>{" "} */}
-        <IconButton aria-label="close" onClick={onClose}>
+        <IconButton aria-label="close" onClick={handleCloseModal}>
           <CloseIcon />
         </IconButton>
       </div>

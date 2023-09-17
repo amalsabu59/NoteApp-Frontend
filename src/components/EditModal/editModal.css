@@ -14,4 +14,12 @@
     color: #fff;
     border: 1px solid #007bff;
   }
-  
+
+
+.close-button {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 10px; /* Adjust the top position as needed */
+  left: 10px; /* Adjust the right position as needed */
+}

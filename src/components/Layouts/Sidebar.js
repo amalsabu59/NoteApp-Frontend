@@ -8,7 +8,7 @@ const Sidebar = () => {
       <div className="sidebar-header">{/* <h1>Notes</h1> */}</div>
       <ul className="sidebar-nav">
         <li>
-          <NavLink to="/notes" activeClassName="active">
+          <NavLink to="/" activeClassName="active">
             Notes
           </NavLink>
         </li>

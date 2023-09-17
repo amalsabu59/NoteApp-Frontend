@@ -12,6 +12,13 @@ import SharedNotes from "../SharedNote/SharedNote";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "../Login/Login";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  allUsers,
+  loadUserFromLocalStorage,
+  openLoginModal,
+} from "../../redux/slices/userSlice";
+import { getNote } from "../../redux/slices/noteSlice";
 
 const Home = () => {
   const [notes, setNotes] = useState(/* Your notes data here */);
@@ -19,8 +26,14 @@ const Home = () => {
   const handleSaveNote = (newNote) => {
     setNotes([...notes, newNote]);
   };
-  const notify = () =>
-    toast.success("🦄 Wow so easy!", {
+  const dispatch = useDispatch();
+  const loginModalOpen = useSelector((state) => state.user.loginModal);
+  const failedStatus = useSelector((state) => state.user.failedStatus);
+  const user = useSelector((state) => state.user.currentUser?._id);
+  console.log(user, "gfdgfd");
+
+  const notify = (message) =>
+    toast.error(message, {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -32,8 +45,22 @@ const Home = () => {
     });
 
   useEffect(() => {
-    notify();
-  }, []);
+    if (failedStatus) {
+      notify(failedStatus);
+    }
+    const storedUserData = localStorage.getItem("user");
+    dispatch(loadUserFromLocalStorage(storedUserData));
+  }, [failedStatus]);
+
+  useEffect(() => {
+    if (user) {
+      dispatch(getNote(user));
+    }
+    dispatch(allUsers());
+    if (!user) {
+      dispatch(openLoginModal());
+    }
+  }, [user]);
 
   return (
     <Router>
@@ -51,14 +78,14 @@ const Home = () => {
           theme="dark"
         />
         <Navbar />
-        <Login open={true} />
+        <Login open={loginModalOpen} />
         <div className="content-container">
           {/* Include the Sidebar component */}
           <Sidebar />
 
           <div className="main-content">
             <Routes>
-              <Route path="/notes" element={<Notes />} />
+              {/* <Route path="/notes" element={<Notes />} index={true} /> */}
               <Route path="/shared-notes" element={<SharedNotes />} />
               <Route path="/" element={<Notes />} />
             </Routes>

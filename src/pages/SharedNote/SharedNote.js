@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./sharedNotes.css";
 import NoteList from "../../components/Home/NoteList";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getReceivedNote,
+  getsharedNote,
+} from "../../redux/slices/sharedNoteSlice";
 const SharedNotes = () => {
   const [activeTab, setActiveTab] = useState("sent"); // Default tab is "sent"
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
+  const userId = useSelector((state) => state.user.currentUser?._id);
+  const notes = useSelector((state) => state.note.notes);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getsharedNote({ userId }));
+    dispatch(getReceivedNote({ userId }));
+  }, [userId, notes]);
 
   const sentNotes = useSelector((state) => state.sharedNote.sentNotes);
   const receivedNotes = useSelector((state) => state.sharedNote.receivedNotes);
@@ -39,7 +51,11 @@ const SharedNotes = () => {
 
         {activeTab === "received" && (
           <div>
-            <NoteList notes={receivedNotes} />
+            <NoteList
+              notes={receivedNotes}
+              isFromShared={true}
+              isFromRecived={true}
+            />
           </div>
         )}
       </div>
